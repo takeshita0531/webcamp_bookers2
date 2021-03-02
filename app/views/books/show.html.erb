@@ -1,0 +1,52 @@
+<% if @user.id == @book_id.user_id %>
+<main>
+    <%= flash[:notice] %>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <%= render 'users/user_post', user: @user %>
+                <div class="col-md-8 offset-md-1">
+                <h2>Book detail</h2>
+                <table class="table table-hover table-inverse">
+                    <tbody>
+                        <tr>
+                            <th><%= link_to user_path(@user) do %>
+                                <%= attachment_image_tag @user, :profile_image, :profile_image, fallback: "V8ato458A6787_TP_V.jpg", :size => '50x50' %><% end %> <br ><%= link_to @user.name, user_path(@user) %></th>
+                            <th><%= @book_id.title %></th>
+                            <th><%= @book_id.body %></th>
+                            <th><%= link_to "Edit", edit_book_path(@book_id), class: "btn btn-success" %></th>
+                            <th><%= link_to "Destroy", book_path(@book_id), method: :delete, data: { confirm: '削除しますか？' }, class: "btn btn-danger" %></th>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+<% else %>
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <%= render 'users/user_post', user: @book_user %>
+                <div class="col-md-8 offset-md-1">
+                <h2>Book detail</h2>
+                <table class="table table-hover table-inverse">
+                    <tbody>
+                        <tr>
+                            <th><%= link_to user_path(@book_user) do %>
+                                <%= attachment_image_tag @book_user, :profile_image, fallback: "V8ato458A6787_TP_V.jpg", :size => '50x50' %><% end %> <br ><%= link_to @book_user.name, user_path(@book_user) %></th>
+                            <th><%= @book_id.title %></th>
+                            <th><%= @book_id.body %></th>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</main>
+<% end %>

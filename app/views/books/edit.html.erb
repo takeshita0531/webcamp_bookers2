@@ -1,0 +1,25 @@
+<main>
+    <%= flash[:notice] %>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing Book</h1>
+        <%= form_for(@book, url: book_path, method: :patch) do |f| %>
+            <label>Title</label>
+            <div class="form_group">
+                <%= f.text_field :title, value: @book_id.title, :size => '30x4' %>
+            </div>
+            <label>Opinion</label>
+            <div class="form_group">
+                <%= f.text_area :body, value: @book_id.body, :size => '29x4' %>
+            </div>
+            <%= f.submit "Update Book", class: "btn btn-success" %>
+        <% end %>
+        <div class="selection" style="padding-top: 5px;">
+            <%= link_to "Show", book_path(@book_id) %> | <%= link_to "Back", books_path %>
+        </div>
+        </div>
+    </div>
+</div>
+</main>
+    

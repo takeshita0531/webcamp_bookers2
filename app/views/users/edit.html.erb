@@ -1,0 +1,35 @@
+<style>
+    label, h2 {
+        padding-top: 10px;
+    }
+    
+</style>
+<%= render 'users/user_error_message', user_new: @user %>
+
+<main>
+    <%= flash[:notice] %>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+                <h2>User info</h2>
+                <%= form_for @user do |f| %>
+                    <label>Name</label>
+                    <div class="form_group">
+                        <%= f.text_field :name, :size => "50x50" %>
+                    </div>
+                    <label>Image</label>
+                    <div class="form_group">
+                        <%= f.attachment_field :profile_image %>
+                    </div>
+                    <label>Introduction</label>
+                    <div class="form_group">
+                        <%= f.text_area :introduction, :size => "50x4" %>
+                    </div>
+                    <div class="form_group">
+                        <%= f.submit "Update User", class: "btn btn-secondary" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</main>
