@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
                 <h2>User info</h2>
-                <%= form_for @user do |f| %>
+                <%= form_with model: @user, local: true do |f| %>
                     <label>Name</label>
                     <div class="form_group">
                         <%= f.text_field :name, :size => "50x50" %>

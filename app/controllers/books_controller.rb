@@ -5,20 +5,6 @@ class BooksController < ApplicationController
         @book = Book.new
     end 
     
-    def create
-        @user_id = current_user.id
-        @user = User.find_by(id: @user_id)
-        @book_all = Book.all
-        @book = Book.new(book_params)
-        if @book.save
-            flash[:notice] = "You have created book successfully."
-            redirect_to book_path(@book)
-        else
-            flash[:notice] = "New post create error."
-            render 'books/index'
-        end 
-    end 
-    
     def show
         @user_id = current_user.id
         @user = User.find_by(id: @user_id)
@@ -43,6 +29,20 @@ class BooksController < ApplicationController
         else
             redirect_to books_path
         end
+    end 
+    
+    def create
+        @user_id = current_user.id
+        @user = User.find_by(id: @user_id)
+        @book_all = Book.all
+        @book = Book.new(book_params)
+        if @book.save
+            flash[:notice] = "You have created book successfully."
+            redirect_to book_path(@book)
+        else
+            flash[:notice] = "New post create error."
+            render 'books/index'
+        end 
     end 
     
     def update
