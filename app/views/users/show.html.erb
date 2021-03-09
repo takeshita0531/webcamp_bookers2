@@ -2,9 +2,9 @@
     <%= flash[:notice] %>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-3">
                 <%= render 'users/user_post', user: @user %>
-                <div class="col-md-8 offset-md-1">
+                <div class="col-md-8 col-xs-9 offset-md-1">
                 <h2>Books</h2>
                 <table class="table table-hover table-inverse">
                     <thead>
@@ -12,6 +12,7 @@
                             <th></th>
                             <th>Title</th>
                             <th>Opinion</th>
+                            <th>comment</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -21,6 +22,7 @@
                                 <%= attachment_image_tag book.user, :profile_image, fallback: "V8ato458A6787_TP_V.jpg", :size => '50x50' %><% end %></th>
                             <th><%= link_to book.title, book_path(book) %></th>
                             <th><%= book.body %></th>
+                            <th><%= book.book_comments.count %></th>
                         </tr>
                         <% end %>
                     </tbody>

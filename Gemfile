@@ -57,3 +57,4 @@ gem 'font-awesome-sass', '~> 5.4.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem "data-confirm-modal"
+gem "pry-rails"

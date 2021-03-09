@@ -10,6 +10,7 @@ class BooksController < ApplicationController
         @user = User.find_by(id: @user_id)
         @book = Book.new
         @book_id = Book.find(params[:id])
+        @book_comment = BookComment.new
         @book_user = User.find(@book_id.user_id)
     end 
     
@@ -17,6 +18,7 @@ class BooksController < ApplicationController
         @user_id = current_user.id
         @user = User.find_by(id: @user_id)
         @book = Book.new
+        @favo = Favorite.new
         @book_all = Book.all
         @user_all = User.all
     end 

@@ -3,9 +3,9 @@
     <%= flash[:notice] %>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-3">
                 <%= render 'users/user_post', user: @user %>
-                <div class="col-md-8 offset-md-1">
+                <div class="col-md-8  col-xs-9 offset-md-1">
                 <h2>Book detail</h2>
                 <table class="table table-hover table-inverse">
                     <thead>
@@ -13,6 +13,8 @@
                             <th></th>
                             <th>Title</th>
                             <th>Opinion</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,6 +24,36 @@
                                     <%= attachment_image_tag book.user, :profile_image, fallback: "V8ato458A6787_TP_V.jpg", :size => '50x50' %><% end %></th>
                                 <th><%= link_to book.title, book_path(book) %></th>
                                 <th><%= book.body %></th>
+                                <th>
+                                    <% if false %>
+                                    <% if book.favorited_by?(current_user) %>
+                                        <%=form_with modele: @favo, url: book_favorite_path(book, book.favorites), local: true do |f| %>
+                                            <%= f.label :aaa %>
+                                            <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.hidden_field :book_id, value: book.id %>
+                                            <%= f.submit "www" %>
+                                        <% end %>
+                                    <% else %>
+                                        <%= form_with modele: @favo, url: book_favorite_path(book, book.favorites), local: true do |f| %>
+                                            <%= f.label :aaa %>
+                                            <%= f.hidden_field :user_id, value: current_user.id %>
+                                            <%= f.hidden_field :book_id, value: book.id %>
+                                            <%= f.submit "y" %>
+                                        <% end %>
+                                    <% end %>
+                                    <% end %>
+                                    
+                                        <% if book.favorited_by?(current_user) %>
+                                            <%= link_to book_favorite_path(book, book.favorites.find_by(user_id: current_user)), method: :delete do %>
+                                                ♥<%= book.favorites.count %>
+                                            <% end %>
+                                        <% else %>
+                                            <%= link_to book_favorites_path(book), method: :post do %>
+                                               ♡<%= book.favorites.count %>
+                                            <% end %>
+                                        <% end %>
+                                </th>
+                                <th>コメント数:<%= book.book_comments.count %></th>
                             </tr>
                         <% end %>
                     </tbody>
