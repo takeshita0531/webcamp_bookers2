@@ -16,7 +16,7 @@
                             <th><%= @book_id.body %></th>
                             <th>
                                 <% if @book_id.favorited_by?(current_user) %>
-                                    <%= link_to book_favorite_path(@book_id, @book_id.favorites.pluck(:id)), method: :delete do %>
+                                    <%= link_to book_favorites_path(@book_id), method: :delete do %>
                                         ♥<%= @book_id.favorites.count %>
                                     <% end %>
                                 <% else %>
@@ -76,7 +76,7 @@
                             <th><%= @book_id.body %></th>
                             <th>
                                 <% if @book_id.favorited_by?(current_user) %>
-                                    <%= link_to book_favorite_path(@book_id, @book_id.favorites.pluck(:id)), method: :delete do %>
+                                    <%= link_to book_favorites_path(@book_id), method: :delete do %>
                                         ♥<%= @book_id.favorites.count %>
                                     <% end %>
                                 <% else %>

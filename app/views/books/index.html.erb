@@ -44,7 +44,7 @@
                                     <% end %>
                                     
                                         <% if book.favorited_by?(current_user) %>
-                                            <%= link_to book_favorite_path(book, book.favorites.find_by(user_id: current_user)), method: :delete do %>
+                                            <%= link_to book_favorites_path(book), method: :delete do %>
                                                 ♥<%= book.favorites.count %>
                                             <% end %>
                                         <% else %>
